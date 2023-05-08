@@ -9,6 +9,14 @@
 /* Begin PBXBuildFile section */
 		DD7DBD7B2A09366E00FCC083 /* WeatherForecastsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD7DBD7A2A09366E00FCC083 /* WeatherForecastsViewController.swift */; };
 		DD7DBD7D2A0936D100FCC083 /* WeatherForecastsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD7DBD7C2A0936D100FCC083 /* WeatherForecastsViewModel.swift */; };
+		DD7DBD7F2A09381400FCC083 /* ViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD7DBD7E2A09381400FCC083 /* ViewModelType.swift */; };
+		DD7DBD822A0938C300FCC083 /* RxBlocking in Frameworks */ = {isa = PBXBuildFile; productRef = DD7DBD812A0938C300FCC083 /* RxBlocking */; };
+		DD7DBD842A0938C300FCC083 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = DD7DBD832A0938C300FCC083 /* RxCocoa */; };
+		DD7DBD862A0938C300FCC083 /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = DD7DBD852A0938C300FCC083 /* RxRelay */; };
+		DD7DBD882A0938C300FCC083 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = DD7DBD872A0938C300FCC083 /* RxSwift */; };
+		DD7DBD8A2A0938C300FCC083 /* RxTest in Frameworks */ = {isa = PBXBuildFile; productRef = DD7DBD892A0938C300FCC083 /* RxTest */; };
+		DD7DBD8D2A0938FA00FCC083 /* PinLayout in Frameworks */ = {isa = PBXBuildFile; productRef = DD7DBD8C2A0938FA00FCC083 /* PinLayout */; };
+		DD7DBD902A09392800FCC083 /* FlexLayout in Frameworks */ = {isa = PBXBuildFile; productRef = DD7DBD8F2A09392800FCC083 /* FlexLayout */; };
 		DD9B05272A09275F00FADA4C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9B05262A09275F00FADA4C /* AppDelegate.swift */; };
 		DD9B05292A09275F00FADA4C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9B05282A09275F00FADA4C /* SceneDelegate.swift */; };
 		DD9B05302A09275F00FADA4C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DD9B052F2A09275F00FADA4C /* Assets.xcassets */; };
@@ -38,6 +46,7 @@
 /* Begin PBXFileReference section */
 		DD7DBD7A2A09366E00FCC083 /* WeatherForecastsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherForecastsViewController.swift; sourceTree = "<group>"; };
 		DD7DBD7C2A0936D100FCC083 /* WeatherForecastsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherForecastsViewModel.swift; sourceTree = "<group>"; };
+		DD7DBD7E2A09381400FCC083 /* ViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelType.swift; sourceTree = "<group>"; };
 		DD9B05232A09275F00FADA4C /* WeatherForecasts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherForecasts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD9B05262A09275F00FADA4C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DD9B05282A09275F00FADA4C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -56,6 +65,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DD7DBD902A09392800FCC083 /* FlexLayout in Frameworks */,
+				DD7DBD8D2A0938FA00FCC083 /* PinLayout in Frameworks */,
+				DD7DBD8A2A0938C300FCC083 /* RxTest in Frameworks */,
+				DD7DBD862A0938C300FCC083 /* RxRelay in Frameworks */,
+				DD7DBD842A0938C300FCC083 /* RxCocoa in Frameworks */,
+				DD7DBD882A0938C300FCC083 /* RxSwift in Frameworks */,
+				DD7DBD822A0938C300FCC083 /* RxBlocking in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -101,6 +117,7 @@
 			children = (
 				DD9B05262A09275F00FADA4C /* AppDelegate.swift */,
 				DD9B05282A09275F00FADA4C /* SceneDelegate.swift */,
+				DD7DBD7E2A09381400FCC083 /* ViewModelType.swift */,
 				DD7DBD7A2A09366E00FCC083 /* WeatherForecastsViewController.swift */,
 				DD7DBD7C2A0936D100FCC083 /* WeatherForecastsViewModel.swift */,
 				DD9B052F2A09275F00FADA4C /* Assets.xcassets */,
@@ -143,6 +160,15 @@
 			dependencies = (
 			);
 			name = WeatherForecasts;
+			packageProductDependencies = (
+				DD7DBD812A0938C300FCC083 /* RxBlocking */,
+				DD7DBD832A0938C300FCC083 /* RxCocoa */,
+				DD7DBD852A0938C300FCC083 /* RxRelay */,
+				DD7DBD872A0938C300FCC083 /* RxSwift */,
+				DD7DBD892A0938C300FCC083 /* RxTest */,
+				DD7DBD8C2A0938FA00FCC083 /* PinLayout */,
+				DD7DBD8F2A09392800FCC083 /* FlexLayout */,
+			);
 			productName = WeatherForecasts;
 			productReference = DD9B05232A09275F00FADA4C /* WeatherForecasts.app */;
 			productType = "com.apple.product-type.application";
@@ -215,6 +241,11 @@
 				Base,
 			);
 			mainGroup = DD9B051A2A09275F00FADA4C;
+			packageReferences = (
+				DD7DBD802A0938C300FCC083 /* XCRemoteSwiftPackageReference "RxSwift" */,
+				DD7DBD8B2A0938FA00FCC083 /* XCRemoteSwiftPackageReference "PinLayout" */,
+				DD7DBD8E2A09392800FCC083 /* XCRemoteSwiftPackageReference "FlexLayout" */,
+			);
 			productRefGroup = DD9B05242A09275F00FADA4C /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -260,6 +291,7 @@
 				DD7DBD7D2A0936D100FCC083 /* WeatherForecastsViewModel.swift in Sources */,
 				DD9B05272A09275F00FADA4C /* AppDelegate.swift in Sources */,
 				DD7DBD7B2A09366E00FCC083 /* WeatherForecastsViewController.swift in Sources */,
+				DD7DBD7F2A09381400FCC083 /* ViewModelType.swift in Sources */,
 				DD9B05292A09275F00FADA4C /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -430,6 +462,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = XLTUC52FU8;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"FLEXLAYOUT_SWIFT_PACKAGE=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WeatherForecasts/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -457,6 +494,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = XLTUC52FU8;
+				GCC_PREPROCESSOR_DEFINITIONS = "FLEXLAYOUT_SWIFT_PACKAGE=1";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WeatherForecasts/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -592,6 +630,71 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		DD7DBD802A0938C300FCC083 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
+			requirement = {
+				kind = exactVersion;
+				version = 6.5.0;
+			};
+		};
+		DD7DBD8B2A0938FA00FCC083 /* XCRemoteSwiftPackageReference "PinLayout" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/layoutBox/PinLayout";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+		DD7DBD8E2A09392800FCC083 /* XCRemoteSwiftPackageReference "FlexLayout" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/layoutBox/FlexLayout.git";
+			requirement = {
+				kind = exactVersion;
+				version = 1.3.18;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		DD7DBD812A0938C300FCC083 /* RxBlocking */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DD7DBD802A0938C300FCC083 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxBlocking;
+		};
+		DD7DBD832A0938C300FCC083 /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DD7DBD802A0938C300FCC083 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		DD7DBD852A0938C300FCC083 /* RxRelay */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DD7DBD802A0938C300FCC083 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxRelay;
+		};
+		DD7DBD872A0938C300FCC083 /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DD7DBD802A0938C300FCC083 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
+		};
+		DD7DBD892A0938C300FCC083 /* RxTest */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DD7DBD802A0938C300FCC083 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxTest;
+		};
+		DD7DBD8C2A0938FA00FCC083 /* PinLayout */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DD7DBD8B2A0938FA00FCC083 /* XCRemoteSwiftPackageReference "PinLayout" */;
+			productName = PinLayout;
+		};
+		DD7DBD8F2A09392800FCC083 /* FlexLayout */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DD7DBD8E2A09392800FCC083 /* XCRemoteSwiftPackageReference "FlexLayout" */;
+			productName = FlexLayout;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = DD9B051B2A09275F00FADA4C /* Project object */;
 }
