@@ -15,7 +15,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let scene = scene as? UIWindowScene else { return }
         self.window = UIWindow(windowScene: scene)
-        let viewModel = WeatherForecastsViewModel()
+        let viewModel = WeatherForecastsViewModel(weatherClient: .live, cityNames: ["Seoul", "London", "Chicago"])
         let viewController = WeatherForecastsViewController(viewModel: viewModel)
         let rootViewController = UINavigationController(rootViewController: viewController)
         self.window?.rootViewController = rootViewController
