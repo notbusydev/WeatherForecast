@@ -6,24 +6,53 @@
 //
 
 import XCTest
+import RxSwift
+import RxBlocking
 @testable import WeatherForecasts
 
-final class WeatherForecastsTests: XCTestCase {
+final class WeatherForecastsViewModelTests: XCTestCase {
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+    
+    let disposeBag = DisposeBag()
+    
+    func test_날씨예보_지역_불러오기() throws {
+        let weatherMock = WeatherClient { cityName in
+            let city = City(id: 0, name: cityName)
+            let response = WeatherForecastForCityResponse(cod: "", message: 0, cnt: 0, list: [], city: city)
+            return .just(response)
+        }
+        let cities = ["Seoul", "London", "Chicago"]
+        let viewModel = WeatherForecastsViewModel(weatherClient: weatherMock, cityNames: cities)
+        let trigger = PublishSubject<Void>()
+        let input = WeatherForecastsViewModel.Input(viewWillAppear: trigger.asDriverOnErrorJustComplete())
+        let output = viewModel.transform(input: input)
+        
+        output.weatherForeCasts.drive().disposed(by: disposeBag)
+        trigger.onNext(())
+        
+        let weatherForeCasts = try output.weatherForeCasts.toBlocking().first()!
+        XCTAssertEqual(weatherForeCasts.count, cities.count)
+        for (index, city) in cities.enumerated() {
+            XCTAssertEqual(weatherForeCasts[index].cityName, city)
+        }
+        
     }
 
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
+    func test_날씨API에러() throws {
+        let weatherMock = WeatherClient { cityName in
+            return Observable<WeatherForecastForCityResponse>.error(URLError(.badURL))
+        }
+        let viewModel = WeatherForecastsViewModel(weatherClient: weatherMock, cityNames: [""])
+        let trigger = PublishSubject<Void>()
+        let input = WeatherForecastsViewModel.Input(viewWillAppear: trigger.asDriverOnErrorJustComplete())
+        let output = viewModel.transform(input: input)
+        
+        output.error.drive().disposed(by: disposeBag)
+        output.weatherForeCasts.drive().disposed(by: disposeBag)
+        trigger.onNext(())
+        
+        let error = try output.error.toBlocking(timeout: 3).first()
+        XCTAssertNotNil(error)
     }
 
 }
