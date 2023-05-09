@@ -15,7 +15,7 @@ final class WeatherForecastsViewModelTests: XCTestCase {
     
     let disposeBag = DisposeBag()
     
-    func test_날씨예보_지역_불러오기() throws {
+    func test_날씨예보_지역_불러오기_순서() throws {
         let weatherMock = WeatherClient { cityName in
             let city = City(id: 0, name: cityName)
             let response = WeatherForecastForCityResponse(cod: "", message: 0, cnt: 0, list: [], city: city)
@@ -35,6 +35,30 @@ final class WeatherForecastsViewModelTests: XCTestCase {
         for (index, city) in cities.enumerated() {
             XCTAssertEqual(weatherForeCasts[index].cityName, city)
         }
+        
+    }
+    
+    func test_날씨예보_지역_불러오기_온도() throws {
+        let weatherMock = WeatherClient { cityName in
+            let city = City(id: 0, name: cityName)
+            let temperatures = [WeatherForecast(temp: 10), WeatherForecast(temp: 30),WeatherForecast(temp: 500)]
+            
+            let response = WeatherForecastForCityResponse(cod: "", message: 0, cnt: 0, list: temperatures, city: city)
+            return .just(response)
+        }
+        let cities = ["Seoul"]
+        let viewModel = WeatherForecastsViewModel(weatherClient: weatherMock, cityNames: cities)
+        let trigger = PublishSubject<Void>()
+        let input = WeatherForecastsViewModel.Input(viewWillAppear: trigger.asDriverOnErrorJustComplete())
+        let output = viewModel.transform(input: input)
+        
+        output.weatherForeCasts.drive().disposed(by: disposeBag)
+        trigger.onNext(())
+        
+        let item = try output.weatherForeCasts.toBlocking().first()!.first!.weatherForecastItems.first!
+        print(item.maxTemperature)
+        XCTAssertEqual("MIN: 10.0℃", item.minTemperature)
+        XCTAssertEqual("MAX: 500.0℃", item.maxTemperature)
         
     }
 
