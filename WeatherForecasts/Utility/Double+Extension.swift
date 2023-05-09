@@ -12,3 +12,16 @@ extension Double {
         String(self)
     }
 }
+
+extension Comparable {
+    
+    func getMin(_ value: Self?) -> Self {
+        guard let value = value else { return self }
+        return min(self, value)
+    }
+    
+    func getMax(_ value: Self?) -> Self {
+        guard let value = value else { return self }
+        return max(self, value)
+    }
+}

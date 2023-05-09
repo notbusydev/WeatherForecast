@@ -31,6 +31,7 @@
 		DDDA1D6E2A09406D005EF14E /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = DDDA1D6D2A09406D005EF14E /* RxCocoa */; };
 		DDDA1D702A094074005EF14E /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = DDDA1D6F2A094074005EF14E /* RxCocoa */; };
 		DDDA1D722A0940B0005EF14E /* RxBlocking in Frameworks */ = {isa = PBXBuildFile; productRef = DDDA1D712A0940B0005EF14E /* RxBlocking */; };
+		DDDA1D742A09CF09005EF14E /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDDA1D732A09CF09005EF14E /* Constant.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,6 +87,7 @@
 		DD9B05342A09275F00FADA4C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DD9B05392A09275F00FADA4C /* WeatherForecastsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WeatherForecastsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD9B053D2A09275F00FADA4C /* WeatherForecastsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherForecastsTests.swift; sourceTree = "<group>"; };
+		DDDA1D732A09CF09005EF14E /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,6 +147,7 @@
 			isa = PBXGroup;
 			children = (
 				DD7DBD7E2A09381400FCC083 /* ViewModelType.swift */,
+				DDDA1D732A09CF09005EF14E /* Constant.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -357,6 +360,7 @@
 				DD7DBD982A0939EC00FCC083 /* TableViewTitleHeaderView.swift in Sources */,
 				DD9B05292A09275F00FADA4C /* SceneDelegate.swift in Sources */,
 				DD7DBDA12A093A3100FCC083 /* Double+Extension.swift in Sources */,
+				DDDA1D742A09CF09005EF14E /* Constant.swift in Sources */,
 				DD7DBD9F2A093A2600FCC083 /* Date+Extension.swift in Sources */,
 				DD7DBDA42A093A7800FCC083 /* WeatherForecastItemTableViewCell.swift in Sources */,
 			);

@@ -50,41 +50,46 @@ class WeatherForecastsViewModel: ViewModelType {
 
 struct WeatherForeCastSectionViewModel {
     let cityName: String
-    let weatherForeCastItems: [WeatherForecastItemViewModel]
+    let weatherForecastItems: [WeatherForecastItemViewModel]
     init(_ response: WeatherForecastForCityResponse) {
         cityName = response.city.name
-        var temp = [Date: [WeatherForecast]]()
-        for weatherForecast in response.list {
-            let date = weatherForecast.date
-            let startDay = Calendar.current.startOfDay(for: date)
-            if let array = temp[startDay] {
-                temp[startDay] = array + [weatherForecast]
-            } else {
-                temp[startDay] = [weatherForecast]
-            }
-        }
+        var weatherForecastItems: [WeatherForecastItemViewModel] = []
+        var currentDateString: String?
+        var currentMinTemperature: Double?
+        var currentMaxTemperature: Double?
         
-        weatherForeCastItems = temp.sorted(by: { $0.key < $1.key })
-            .map { key, weatherForecasts -> WeatherForecastItemViewModel in
-                let temperatures = weatherForecasts.map { $0.temp }
-                let minTemperature = "MIN: \(temperatures.min()?.toString ?? "-")℃"
-                let maxTemperature = "MAX: \(temperatures.max()?.toString ?? "-")℃"
-                let firstWeather = weatherForecasts.first?.weather.first
+        for (index, weatherForecast) in response.list.enumerated() {
+            let forecastDateString = weatherForecast.date.toKorean
+            if currentDateString == nil || currentDateString == forecastDateString {
+                currentMaxTemperature = weatherForecast.temp.getMax(currentMaxTemperature)
+                currentMinTemperature = weatherForecast.temp.getMin(currentMinTemperature)
+                currentDateString = forecastDateString
+            }
+            
+            if let dateString = currentDateString, dateString != forecastDateString || index == response.list.count - 1 {
+                let firstWeather = weatherForecast.weather.first
                 let main = firstWeather?.main ?? " - "
                 let description = firstWeather?.description ?? " - "
                 let iconName = firstWeather?.icon.replacingOccurrences(of: "\\D", with: "", options: .regularExpression) ?? "na"
-                let dateString: String
-                if Calendar.current.isDateInToday(key) {
-                    dateString = "오늘"
-                } else if Calendar.current.isDateInTomorrow(key) {
-                    dateString = "내일"
-                } else {
-                    dateString = key.toString("yy년 MM월 dd일(E)")
-                }
-                return WeatherForecastItemViewModel(main: main, description: description, iconName: iconName, date: dateString, maxTemperature: maxTemperature, minTemperature: minTemperature)
+                let minTemperature = "MIN: \(currentMinTemperature?.toString ?? "-")℃"
+                let maxTemperature = "MAX: \(currentMaxTemperature?.toString ?? "-")℃"
+                let itemViewModel = WeatherForecastItemViewModel(main: main,
+                                                                 description: description,
+                                                                 iconName: iconName,
+                                                                 date: dateString,
+                                                                 maxTemperature: maxTemperature,
+                                                                 minTemperature: minTemperature)
+                weatherForecastItems.append(itemViewModel)
+                currentDateString = nil
+                currentMinTemperature = nil
+                currentMaxTemperature = nil
             }
+        }
+        self.weatherForecastItems = weatherForecastItems
     }
 }
+
+
 
 struct WeatherForecastItemViewModel {
     let main: String

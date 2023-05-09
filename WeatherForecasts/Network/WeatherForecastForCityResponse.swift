@@ -55,7 +55,12 @@ struct WeatherForecast: Decodable {
         weather = try container.decode([Weather].self, forKey: .weather)
         let mainContainer = try container.nestedContainer(keyedBy: CodingKeys.self, forKey: .main)
         temp = try mainContainer.decode(Double.self, forKey: .temp)
-        
+    }
+    
+    init(date: Date = Date(), weather: [Weather] = [], temp: Double = 0) {
+        self.date = date
+        self.weather = weather
+        self.temp = temp
     }
 }
 

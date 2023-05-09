@@ -70,12 +70,12 @@ extension WeatherForecastsViewController: UITableViewDataSource {
         return objects.count
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        objects[section].weatherForeCastItems.count
+        objects[section].weatherForecastItems.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "WeatherForecastItemTableViewCell", for: indexPath) as! WeatherForecastItemTableViewCell
-        let item = objects[indexPath.section].weatherForeCastItems[indexPath.row]
+        let item = objects[indexPath.section].weatherForecastItems[indexPath.row]
         cell.bind(item)
         return cell
     }

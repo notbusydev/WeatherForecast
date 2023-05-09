@@ -15,4 +15,14 @@ extension Date {
         dateFormatter.locale = Locale(identifier: "ko_KR")
         return dateFormatter.string(from: self)
     }
+    
+    var toKorean: String {
+        if Calendar.current.isDateInToday(self) {
+            return "오늘"
+        } else if Calendar.current.isDateInTomorrow(self) {
+            return "내일"
+        } else {
+            return self.toString("yy년 MM월 dd일(E)")
+        }
+    }
 }
